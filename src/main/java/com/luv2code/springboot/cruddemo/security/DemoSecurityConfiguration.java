@@ -36,11 +36,11 @@ public class DemoSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer->
                 configurer
-                        .requestMatchers(HttpMethod.GET, "api/employees").hasRole("EMPLOYEE")
-                        .requestMatchers(HttpMethod.GET, "api/employees/**").hasRole("EMPLOYEE")
-                        .requestMatchers(HttpMethod.POST, "api/employees").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.PUT, "api/employees").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.DELETE, "api/employees").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/employees").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.POST, "/api/employees").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.PUT, "/api/employees").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
                 );
         //USE Http Basic authentication
         http.httpBasic(Customizer.withDefaults());
@@ -49,6 +49,6 @@ public class DemoSecurityConfiguration {
 
         http.csrf(csrf->csrf.disable());
 
-        return null;
+        return http.build();
     }
 }
