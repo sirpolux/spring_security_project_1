@@ -16,9 +16,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "authorities",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"username", "authority"})})
 public class Authority {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id; @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @ManyToOne
     @JoinColumn(name = "username", referencedColumnName = "username", nullable = false,
             foreignKey = @ForeignKey(name = "authorities_fk_user"))

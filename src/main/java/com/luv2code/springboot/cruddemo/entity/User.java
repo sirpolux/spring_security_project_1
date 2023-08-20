@@ -24,6 +24,6 @@ public class User {
     @Column(length = 50,nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private boolean enabled;
+    @Column(nullable = false, length = 1)
+    private Integer enabled;
 }
